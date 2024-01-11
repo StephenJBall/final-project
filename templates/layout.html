@@ -10,30 +10,29 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.html">Munster Stats</a>
+        <a class="navbar-brand" href="/">Munster Stats</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+              <a class="nav-link" href="/playerbase">Player Base</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="playerbase.html">Player Base</a>
+              <a class="nav-link" href="/matchreports">Match Reports</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="matchreports.html">Match Reports</a>
+              <a class="nav-link" href="/injuryreports">Injury Reports</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="injuryreports.html">Injury Reports</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="contracts.html">Contracts</a>
+                <a class="nav-link" href="/contracts">Contracts</a>
             </li>
           </ul>
         </div>
       </nav>
-<main>{% block main %}{% endblock %}</main>
+<main>
+  {% block main %}{% endblock %}
+</main>
 </body>
 </html>
