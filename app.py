@@ -46,10 +46,14 @@ def adddata():
         injurystatus = request.form.get("injurystatus")
 
         player_info = [name, age, position, tries, caps, injurystatus]
+        print(player_info)
 
-        cursor.execute("INSERT INTO playerbase (name, age, position, caps, tries, injury_status) VALUES (%s,%s,%s,%s,%s,%s);", 
-                       player_info
-                    )
+        cursor.execute("""
+                       INSERT INTO playerbase (name, age, position, caps, tries, injury_status) 
+                       VALUES (%s,%s,%s,%s,%s,%s);
+                       """, 
+                       (player_info))
+        conn.commit()
         return render_template("/adddata.html")
 
     
