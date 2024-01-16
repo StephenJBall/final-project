@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Add Data
+    Edit Data
 {% endblock %}
 
 {% block main %}
@@ -9,31 +9,31 @@
         <div class="form-group row">
         <label for="playername" class="col-sm-2 col-form-label">Player Name</label>
         <div class="col-sm-10">
-            <input name="playername" type="text" class="form-control" id="playername" placeholder="Player Name">
+            {{ name }}
         </div>
         </div>
         <div class="form-group row">
         <label for="playerdob" class="col-sm-2 col-form-label">Date of Birth</label>
         <div class="col-sm-10">
-            <input name="playerdob" type="date" class="form-control" id="playerdob" placeholder="Age">
+            {{ dob }}
         </div>
         </div>
         <div class="form-group row">
             <label for="position" class="col-sm-2 col-form-label">Position</label>
             <div class="col-sm-10">
-                <input name="position" type="text" class="form-control" id="position" placeholder="Postition">
+                <input name="position" type="text" class="form-control" id="position" placeholder="{{ position }}">
             </div>
         </div>
         <div class="form-group row">
             <label for="position" class="col-sm-2 col-form-label">Tries</label>
             <div class="col-sm-10">
-                <input name="tries" type="number" class="form-control" id="position" placeholder="Tries">
+                <input name="tries" type="number" class="form-control" id="position" placeholder="{{ tries }}">
             </div>
         </div>
         <div class="form-group row">
             <label for="caps" class="col-sm-2 col-form-label">Caps</label>
             <div class="col-sm-10">
-                <input name="caps" type="number" class="form-control" id="position" placeholder="Caps">
+                <input name="caps" type="number" class="form-control" id="position" placeholder="{{ caps }}">
             </div>
         </div>
         <fieldset class="form-group">
@@ -42,11 +42,11 @@
             <div class="form-group col-md-4">
                 <label for="inputState"></label>
                 <select name="injurystatus" id="inputState" class="form-control">
-                  <option selected disabled>Injury Status</option>
-                  <option>Injured</option>
-                  <option>Not Injured</option>
+                <option selected disabled>{{ injurystatus }}</option>
+                <option>Injured</option>
+                <option>Not Injured</option>
                 </select>
-              </div>
+            </div>
         </div>
         </fieldset>
         <div class="form-group row">
@@ -54,25 +54,5 @@
             <button type="submit" class="btn btn-primary">Submit Player Info</button>
         </div>
         </div>
-    </form>
-    <form action="/editdata" method="post">
-        <fieldset class="form-group">
-            <div class="row">
-                <div class="form-group col-md-4">
-                    <label for="inputState"></label>
-                    <select name="selectplayer" id="inputState" class="form-control">
-                      <option selected disabled>Select Player</option>
-                      {% for player in players %}
-                      <option>{{ player[0] }}</option>
-                      {% endfor %}
-                    </select>
-                  </div>
-            </div>
-            </fieldset>
-            <div class="form-group row">
-            <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary">Select Player to Edit</button>
-            </div>
-            </div>
     </form>
 {% endblock %}

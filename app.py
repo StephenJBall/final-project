@@ -48,7 +48,6 @@ def adddata():
         injurystatus = request.form.get("injurystatus")
 
         player_info = [name, dob, position, tries, caps, injurystatus]
-        print(player_info)
 
         cursor.execute("""
                        INSERT INTO playerbase (name, date_of_birth, position, caps, tries, injury_status) 
@@ -58,5 +57,17 @@ def adddata():
         conn.commit()
         return render_template("/adddata.html")
 
-    
-
+@app.route("/editdata", methods=["GET", "POST"])
+def editdata():
+    if request.method == "POST":
+        name = request.form.get("selectplayer")
+        cursor.execute("SELECT * from playerbase where name = '%s';" % name)
+        player = cursor.fetchall()
+        print(player)
+        name = player[0][1]
+        dob = player[0][2]
+        position = player[0][3]
+        tries = player[0][4]
+        caps = player[0][5]
+        injurystatus = player[0][7]
+        return render_template("/editdata.html", player=player, name=name, dob=dob, position=position, tries=tries, caps=caps, injurystatus=injurystatus)
