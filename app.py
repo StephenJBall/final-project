@@ -36,7 +36,9 @@ def contracts():
 @app.route("/adddata", methods=["GET", "POST"])
 def adddata():
     if request.method == "GET":
-        return render_template("/adddata.html")
+        cursor.execute("""SELECT name FROM playerbase""")
+        players = cursor.fetchall()
+        return render_template("/adddata.html", players=players)
     if request.method =="POST":
         name = request.form.get("playername")
         age = request.form.get("playerage")

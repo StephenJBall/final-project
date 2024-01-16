@@ -38,7 +38,7 @@
         </div>
         <fieldset class="form-group">
         <div class="row">
-            <legend class="col-form-label col-sm-2 pt-0">Injury Status</legend>
+            <label for="caps" class="col-sm-2 col-form-label">Injury Status</label>
             <div class="form-group col-md-4">
                 <label for="inputState"></label>
                 <select name="injurystatus" id="inputState" class="form-control">
@@ -54,5 +54,25 @@
             <button type="submit" class="btn btn-primary">Submit Player Info</button>
         </div>
         </div>
+    </form>
+    <form action="adddata.html" method="get">
+        <fieldset class="form-group">
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="inputState"></label>
+                    <select name="selectplayer" id="inputState" class="form-control">
+                      <option selected disabled>Select Player</option>
+                      {% for player in players %}
+                      <option>{{ player[0] }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+            </div>
+            </fieldset>
+            <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Select Player to Edit</button>
+            </div>
+            </div>
     </form>
 {% endblock %}
