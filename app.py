@@ -41,17 +41,17 @@ def adddata():
         return render_template("/adddata.html", players=players)
     if request.method =="POST":
         name = request.form.get("playername")
-        age = request.form.get("playerage")
+        dob = request.form.get("playerdob")
         position = request.form.get("position")
         tries = request.form.get("tries")
         caps = request.form.get("caps")
         injurystatus = request.form.get("injurystatus")
 
-        player_info = [name, age, position, tries, caps, injurystatus]
+        player_info = [name, dob, position, tries, caps, injurystatus]
         print(player_info)
 
         cursor.execute("""
-                       INSERT INTO playerbase (name, age, position, caps, tries, injury_status) 
+                       INSERT INTO playerbase (name, date_of_birth, position, caps, tries, injury_status) 
                        VALUES (%s,%s,%s,%s,%s,%s);
                        """, 
                        (player_info))

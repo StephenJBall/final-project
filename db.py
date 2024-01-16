@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-conn = psycopg2.connect(database="munster_stats",
+conn = psycopg2.connect(database="munster-stats",
                         host="localhost",
                         user="stephen",
                         port="5432")
