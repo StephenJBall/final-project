@@ -5,11 +5,12 @@
 {% endblock %}
 
 {% block main %}
-    <form action="/adddata" method="post">
+    <form action="/datasubmitted" method="post">
         <div class="form-group row">
         <label for="playername" class="col-sm-2 col-form-label">Player Name</label>
-        <div class="col-sm-10">
+        <div class="col-sm-10" name="name">
             {{ name }}
+            <input type="hidden" name="name" value="{{ name }}">
         </div>
         </div>
         <div class="form-group row">
@@ -21,19 +22,19 @@
         <div class="form-group row">
             <label for="position" class="col-sm-2 col-form-label">Position</label>
             <div class="col-sm-10">
-                <input name="position" type="text" class="form-control" id="position" placeholder="{{ position }}">
+                <input name="position" type="text" class="form-control" id="position" value="{{ position }}">
             </div>
         </div>
         <div class="form-group row">
             <label for="position" class="col-sm-2 col-form-label">Tries</label>
             <div class="col-sm-10">
-                <input name="tries" type="number" class="form-control" id="position" placeholder="{{ tries }}">
+                <input name="tries" type="number" class="form-control" id="position" value="{{ tries }}">
             </div>
         </div>
         <div class="form-group row">
             <label for="caps" class="col-sm-2 col-form-label">Caps</label>
             <div class="col-sm-10">
-                <input name="caps" type="number" class="form-control" id="position" placeholder="{{ caps }}">
+                <input name="caps" type="number" class="form-control" id="position" value="{{ caps }}">
             </div>
         </div>
         <fieldset class="form-group">
@@ -51,7 +52,7 @@
         </fieldset>
         <div class="form-group row">
         <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Submit Player Info</button>
+            <button type="submit" class="btn btn-primary">Submit Changes</button>
         </div>
         </div>
     </form>

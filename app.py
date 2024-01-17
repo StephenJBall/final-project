@@ -47,7 +47,7 @@ def adddata():
         caps = request.form.get("caps")
         injurystatus = request.form.get("injurystatus")
 
-        player_info = [name, dob, position, tries, caps, injurystatus]
+        player_info = [name, dob, position, caps, tries, injurystatus]
 
         cursor.execute("""
                        INSERT INTO playerbase (name, date_of_birth, position, caps, tries, injury_status) 
@@ -63,7 +63,6 @@ def editdata():
         name = request.form.get("selectplayer")
         cursor.execute("SELECT * from playerbase where name = '%s';" % name)
         player = cursor.fetchall()
-        print(player)
         name = player[0][1]
         dob = player[0][2]
         position = player[0][3]
@@ -71,3 +70,21 @@ def editdata():
         caps = player[0][5]
         injurystatus = player[0][7]
         return render_template("/editdata.html", player=player, name=name, dob=dob, position=position, tries=tries, caps=caps, injurystatus=injurystatus)
+    
+@app.route("/datasubmitted", methods=["GET", "POST"])
+def datasubmitted():
+    if request.method == "POST":
+        name = request.form.get("name")
+        position = request.form.get("position")
+        tries = request.form.get("tries")
+        caps = request.form.get("caps")
+
+        player_info = [position, tries, caps, name]
+        cursor.execute("""
+                       UPDATE playerbase 
+                       SET position = %s, tries = %s, caps = %s 
+                       WHERE name = %s;
+                       """, 
+                       (player_info))
+        conn.commit()
+        return render_template("/datasubmitted.html")
