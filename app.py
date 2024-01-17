@@ -11,7 +11,9 @@ app.config['SECRET KEY'] = 'secretkey'
 @app.route("/")
 def index():
     if request.method == "GET":
-        return render_template("index.html")
+        cursor.execute("""SELECT name, date_of_birth, position, caps, tries, last_match, injury_status FROM playerbase""")
+        players = cursor.fetchall()
+        return render_template("playerbase.html", players=players)
 
 @app.route("/playerbase")
 def playerbase():
