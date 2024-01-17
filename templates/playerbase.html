@@ -14,7 +14,7 @@
         <thead>
         <tr>
             <th scope="col">Name</th>
-            <th scope="col">Age</th>
+            <th scope="col">Date of Birth</th>
             <th scope="col">Position</th>
             <th scope="col">Caps</th>
             <th scope="col">Tries</th>
@@ -23,33 +23,17 @@
         </tr>
         </thead>
         <tbody>
+            {% for player in players %}
         <tr>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
+            <td>{{ player[0] }}</td>
+            <td>{{ player[1] }}</td>
+            <td>{{ player[2] }}</td>
+            <td>{{ player[3] }}</td>
+            <td>{{ player[4] }}</td>
+            <td>{{ player[5] }}</td>
+            <td>{{ player[6] }}</td>
         </tr>
-        <tr>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-        </tr>
+            {% endfor %}
         </tbody>
     </table>
   

@@ -16,7 +16,9 @@ def index():
 @app.route("/playerbase")
 def playerbase():
     if request.method == "GET":
-        return render_template("playerbase.html")
+        cursor.execute("""SELECT name, date_of_birth, position, caps, tries, last_match, injury_status FROM playerbase""")
+        players = cursor.fetchall()
+        return render_template("playerbase.html", players=players)
     
 @app.route("/matchreports")
 def matchreports():
