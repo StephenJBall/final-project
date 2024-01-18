@@ -35,7 +35,9 @@ def injuryreports():
 @app.route("/contracts")
 def contracts():
     if request.method == "GET":
-        return render_template("/contracts.html")
+        cursor.execute("""SELECT name FROM playerbase""")
+        players = cursor.fetchall()
+        return render_template("/contracts.html", players=players)
     
 @app.route("/adddata", methods=["GET", "POST"])
 def adddata():
