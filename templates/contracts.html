@@ -28,12 +28,12 @@
         </tr>
         </tbody>
     </table>
-    <form action="/adddata" method="post">
+    <form action="/contracts" method="post">
         <fieldset class="form-group">
             <div class="row">
                 <div class="form-group col-md-4">
                     <label for="inputState"></label>
-                    <select name="selectplayer" id="inputState" class="form-control">
+                    <select name="name" id="inputState" class="form-control">
                       <option selected disabled>Select Player</option>
                       {% for player in players %}
                       <option>{{ player[0] }}</option>

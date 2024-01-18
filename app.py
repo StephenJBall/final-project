@@ -32,11 +32,29 @@ def injuryreports():
     if request.method == "GET":
         return render_template("/injuryreports.html")
 
-@app.route("/contracts")
+@app.route("/contracts", methods=["GET", "POST"])
 def contracts():
     if request.method == "GET":
         cursor.execute("""SELECT name FROM playerbase""")
         players = cursor.fetchall()
+        return render_template("/contracts.html", players=players)
+    if request.method == "POST":
+        cursor.execute("""SELECT name FROM playerbase""")
+        players = cursor.fetchall()
+        name = request.form.get("name")
+        print(name)
+        cursor.execute("SELECT id FROM playerbase WHERE name = '%s';" % name)
+        playerid = cursor.fetchall()
+        playerid = playerid[0][0]
+        duration = request.form.get("duration")
+        type = request.form.get("type")
+        issuer = request.form.get("issuer")
+        cursor.execute("""INSERT INTO contracts 
+                       (player_id, duration, type, issuer)
+                       VALUES (%s,%s,%s,%s);
+                       """,
+                       (playerid, duration, type, issuer))
+        conn.commit()
         return render_template("/contracts.html", players=players)
     
 @app.route("/adddata", methods=["GET", "POST"])
