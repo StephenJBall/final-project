@@ -20,12 +20,14 @@
         </tr>
         </thead>
         <tbody>
+        {% for contract in player_contract %}
         <tr>
-            <td>Player Name</td>
-            <td>Contract Date</td>
-            <td>Type</td>
-            <td>Issuer (IRFU or Munster)</td>
+            <td>{{ contract[0] }}</td>
+            <td>{{ contract[1] }}</td>
+            <td>{{ contract[2] }}</td>
+            <td>{{ contract[3] }}</td>
         </tr>
+        {% endfor %}
         </tbody>
     </table>
     <form action="/contracts" method="post">

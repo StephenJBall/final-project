@@ -35,9 +35,12 @@ def injuryreports():
 @app.route("/contracts", methods=["GET", "POST"])
 def contracts():
     if request.method == "GET":
-        cursor.execute("""SELECT name FROM playerbase""")
-        players = cursor.fetchall()
-        return render_template("/contracts.html", players=players)
+        cursor.execute("""SELECT playerbase.name, contracts.duration, contracts.type, contracts.issuer
+                       FROM contracts
+                       INNER JOIN playerbase ON contracts.player_id = playerbase.id
+                       ORDER BY contracts.duration;""")
+        player_contract = cursor.fetchall()
+        return render_template("contracts.html", player_contract=player_contract)
     if request.method == "POST":
         cursor.execute("""SELECT name FROM playerbase""")
         players = cursor.fetchall()
