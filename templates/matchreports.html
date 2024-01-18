@@ -5,5 +5,11 @@
 {% endblock %}
 
 {% block main %}
-
+    {% for match in matches %} 
+        <h1>{{ match[0] }}</h1>
+        <h2>{{ match[1] }}</h2>
+        <h3>{{ match[2] }}</h3>
+        <h4>{{ match[3] }}</h4>
+        <h4>{{ match[4] }}</h4>
+    {% endfor %} 
 {% endblock %}

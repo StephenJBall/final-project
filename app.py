@@ -25,7 +25,9 @@ def playerbase():
 @app.route("/matchreports")
 def matchreports():
     if request.method == "GET":
-        return render_template("/matchreports.html")
+        cursor.execute("""SELECT opposition, venue, competition, stage, date FROM matchreports;""")
+        matches = cursor.fetchall()
+        return render_template("/matchreports.html", matches=matches)
     
 @app.route("/injuryreports")
 def injuryreports():
@@ -45,7 +47,6 @@ def contracts():
         cursor.execute("""SELECT name FROM playerbase""")
         players = cursor.fetchall()
         name = request.form.get("name")
-        print(name)
         cursor.execute("SELECT id FROM playerbase WHERE name = '%s';" % name)
         playerid = cursor.fetchall()
         playerid = playerid[0][0]
@@ -115,3 +116,17 @@ def datasubmitted():
                        (player_info))
         conn.commit()
         return render_template("/datasubmitted.html")
+
+@app.route("/addmatch", methods=["GET", "POST"])
+def addmatch():
+    if request.method == "POST":
+        opposition = request.form.get("opposition")
+        venue = request.form.get("venue")
+        competition = request.form.get("competition")
+        stage = request.form.get("stage")
+        date = request.form.get("date")
+        cursor.execute("""INSERT INTO matchreports (opposition, venue, competition, stage, date)
+                       VALUES (%s,%s,%s,%s,%s);""",
+                       (opposition, venue, competition, stage, date))
+        conn.commit()
+        return render_template("/adddata.html")

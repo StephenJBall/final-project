@@ -75,4 +75,41 @@
             </div>
             </div>
     </form>
+    <form action="/addmatch" method="post">
+        <div class="form-group row">
+        <label for="opposition" class="col-sm-2 col-form-label">Opposition</label>
+        <div class="col-sm-10">
+            <input name="opposition" type="text" class="form-control" id="opposition" placeholder="Opposition">
+        </div>
+        </div>
+        <div class="form-group row">
+        <label for="venue" class="col-sm-2 col-form-label">Venue</label>
+        <div class="col-sm-10">
+            <input name="venue" type="text" class="form-control" id="venue" placeholder="Venue">
+        </div>
+        </div>
+        <div class="form-group row">
+            <label for="competition" class="col-sm-2 col-form-label">Competition</label>
+            <div class="col-sm-10">
+                <input name="competition" type="text" class="form-control" id="competition" placeholder="Competition">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="stage" class="col-sm-2 col-form-label">Stage</label>
+            <div class="col-sm-10">
+                <input name="stage" type="text" class="form-control" id="stage" placeholder="Stage">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="date" class="col-sm-2 col-form-label">Date</label>
+            <div class="col-sm-10">
+                <input name="date" type="date" class="form-control" id="date" placeholder="Date">
+            </div>
+        </div>
+        <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Submit Match Report</button>
+        </div>
+        </div>
+    </form>
 {% endblock %}
