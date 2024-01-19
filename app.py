@@ -129,4 +129,45 @@ def addmatch():
                        VALUES (%s,%s,%s,%s,%s);""",
                        (opposition, venue, competition, stage, date))
         conn.commit()
+        looseheadprop = request.form.get("looseheadprop")
+        hooker = request.form.get("hooker")
+        tightheadprop = request.form.get("tightheadprop")
+        looseheadlock = request.form.get("looseheadlock")
+        tightheadlock = request.form.get("tightheadlock")
+        blindsideflanker = request.form.get("blindsideflanker")
+        opensideflanker = request.form.get("opensideflanker")
+        numbereight = request.form.get("numbereight")
+        scrumhalf = request.form.get("scrumhalf")
+        flyhalf = request.form.get("flyhalf")
+        leftwing = request.form.get("leftwing")
+        insidecentre = request.form.get("insidecentre")
+        outsidecentre = request.form.get("outsidecentre")
+        rightwing = request.form.get("rightwing")
+        fullback = request.form.get("fullback")
+        
+        bench16 = request.form.get("bench16")
+        bench17 = request.form.get("bench17")
+        bench18 = request.form.get("bench18")
+        bench19 = request.form.get("bench19")
+        bench20 = request.form.get("bench20")
+        bench21 = request.form.get("bench21")
+        bench22 = request.form.get("bench22")
+        bench23 = request.form.get("bench23")
+
+        cursor.execute("SELECT id FROM matchreports WHERE opposition = %s AND venue = %s AND competition = %s AND stage = %s AND date = %s;",
+                       (opposition, venue, competition, stage, date))
+        match_id = cursor.fetchall()
+        match_id = match_id[0][0]
+        this_match = [match_id, looseheadprop, hooker, tightheadprop, looseheadlock, tightheadlock, blindsideflanker, opensideflanker, numbereight, scrumhalf, flyhalf, 
+                        leftwing, insidecentre, outsidecentre, rightwing, fullback,
+                        bench16, bench17, bench18, bench19, bench20, bench21, bench22, bench23]
+        print(this_match)
+
+        cursor.execute("""INSERT INTO team 
+                            (match_id, loosehead_prop, hooker, tighthead_prop, loosehead_lock, tighthead_lock, blindside_flanker, openside_flanker, number_eight, scrum_half,
+                            fly_half, left_wing, inside_centre, outside_centre, right_wing, fullback, bench_16, bench_17, bench_18, bench_19, bench_20,
+                            bench_21, bench_22, bench_23)
+                            VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);""",
+                            (this_match))
+        conn.commit()
         return render_template("/adddata.html")
