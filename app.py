@@ -163,7 +163,6 @@ def addmatch():
         this_match = [match_id, looseheadprop, hooker, tightheadprop, looseheadlock, tightheadlock, blindsideflanker, opensideflanker, numbereight, scrumhalf, flyhalf, 
                         leftwing, insidecentre, outsidecentre, rightwing, fullback,
                         bench16, bench17, bench18, bench19, bench20, bench21, bench22, bench23]
-        print(this_match)
 
         cursor.execute("""INSERT INTO team 
                             (match_id, loosehead_prop, hooker, tighthead_prop, loosehead_lock, tighthead_lock, blindside_flanker, openside_flanker, number_eight, scrum_half,
