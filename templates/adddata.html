@@ -5,6 +5,8 @@
 {% endblock %}
 
 {% block main %}
+<details>
+    <summary>Add New Player to Database</summary>
     <form action="/adddata" method="post">
         <div class="form-group row">
         <label for="playername" class="col-sm-2 col-form-label">Player Name</label>
@@ -55,6 +57,9 @@
         </div>
         </div>
     </form>
+</details>
+<details>
+    <summary>Edit Existing Player</summary>
     <form action="/editdata" method="post">
         <fieldset class="form-group">
             <div class="row">
@@ -75,6 +80,9 @@
             </div>
             </div>
     </form>
+</details>
+<details>
+    <summary>Add New Match Report</summary>
     <form action="/addmatch" method="post">
         <div class="form-group row">
         <label for="opposition" class="col-sm-2 col-form-label">Opposition</label>
@@ -106,10 +114,187 @@
                 <input name="date" type="date" class="form-control" id="date" placeholder="Date">
             </div>
         </div>
+        <details>
+            <summary>Add Match Team</summary>
+            <details>
+                <summary>Starting 15</summary>
+                <details>
+                    <summary>Forwards</summary>
+                    <label for="looseheadprop" id="starter">Loosehead Prop:</label>
+                    <select>
+                        <option selected disabled>Select Player</option>
+                        {% for player in players %}
+                            <option>{{ player[0] }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="hooker" id="starter">Hooker:</label>
+                    <select>
+                        <option selected disabled>Select Player</option>
+                        {% for player in players %}
+                            <option>{{ player[0] }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="tightheadprop" id="starter">Tighthead Prop:</label>
+                    <select>
+                        <option selected disabled>Select Player</option>
+                        {% for player in players %}
+                            <option>{{ player[0] }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="looseheadlock" id="starter">Loosehead Lock:</label>
+                    <select>
+                        <option selected disabled>Select Player</option>
+                        {% for player in players %}
+                            <option>{{ player[0] }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="tightheadlock" id="starter">Tighthead Lock:</label>
+                    <select>
+                        <option selected disabled>Select Player</option>
+                        {% for player in players %}
+                            <option>{{ player[0] }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="blindsideflanker" id="starter">Blindside Flanker:</label>
+                    <select>
+                        <option selected disabled>Select Player</option>
+                        {% for player in players %}
+                            <option>{{ player[0] }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="opensideflanker" id="starter">Openside Flanker:</label>
+                    <select>
+                        <option selected disabled>Select Player</option>
+                        {% for player in players %}
+                            <option>{{ player[0] }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="numbereight" id="starter">Number Eight:</label>
+                    <select>
+                        <option selected disabled>Select Player</option>
+                        {% for player in players %}
+                            <option>{{ player[0] }}</option>
+                        {% endfor %}
+                    </select>
+                </details>
+                <details>
+                    <summary>Backs</summary>
+                    <label for="scrumhalf" id="starter">Scrum Half:</label>
+                    <select>
+                        <option selected disabled>Select Player</option>
+                        {% for player in players %}
+                            <option>{{ player[0] }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="flyhalf" id="starter">Fly Half:</label>
+                    <select>
+                        <option selected disabled>Select Player</option>
+                        {% for player in players %}
+                            <option>{{ player[0] }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="leftwing" id="starter">Left Wing:</label>
+                    <select>
+                        <option selected disabled>Select Player</option>
+                        {% for player in players %}
+                            <option>{{ player[0] }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="insidecentre" id="starter">Inside Centre:</label>
+                    <select>
+                        <option selected disabled>Select Player</option>
+                        {% for player in players %}
+                            <option>{{ player[0] }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="outsidecentre" id="starter">Outside Centre:</label>
+                    <select>
+                        <option selected disabled>Select Player</option>
+                        {% for player in players %}
+                            <option>{{ player[0] }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="rightwing" id="starter">Right Wing:</label>
+                    <select>
+                        <option selected disabled>Select Player</option>
+                        {% for player in players %}
+                            <option>{{ player[0] }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="fullback" id="starter">Fullback:</label>
+                    <select>
+                        <option selected disabled>Select Player</option>
+                        {% for player in players %}
+                            <option>{{ player[0] }}</option>
+                        {% endfor %}
+                    </select>
+                </details>
+            </details>
+            <details>
+                <summary>Bench</summary>
+                <label for="bench16" id="bench">16:</label>
+                <select>
+                    <option selected disabled>Select Player</option>
+                    {% for player in players %}
+                        <option>{{ player[0] }}</option>
+                    {% endfor %}
+                </select>
+                <label for="bench17" id="bench">17:</label>
+                <select>
+                    <option selected disabled>Select Player</option>
+                    {% for player in players %}
+                        <option>{{ player[0] }}</option>
+                    {% endfor %}
+                </select>
+                <label for="bench18" id="bench">18:</label>
+                <select>
+                    <option selected disabled>Select Player</option>
+                    {% for player in players %}
+                        <option>{{ player[0] }}</option>
+                    {% endfor %}
+                </select>
+                <label for="bench19" id="bench">19:</label>
+                <select>
+                    <option selected disabled>Select Player</option>
+                    {% for player in players %}
+                        <option>{{ player[0] }}</option>
+                    {% endfor %}
+                </select>
+                <label for="bench20" id="bench">20:</label>
+                <select>
+                    <option selected disabled>Select Player</option>
+                    {% for player in players %}
+                        <option>{{ player[0] }}</option>
+                    {% endfor %}
+                </select>
+                <label for="bench21" id="bench">21:</label>
+                <select>
+                    <option selected disabled>Select Player</option>
+                    {% for player in players %}
+                        <option>{{ player[0] }}</option>
+                    {% endfor %}
+                </select>
+                <label for="bench22" id="bench">22:</label>
+                <select>
+                    <option selected disabled>Select Player</option>
+                    {% for player in players %}
+                        <option>{{ player[0] }}</option>
+                    {% endfor %}
+                </select>
+                <label for="bench23" id="bench">23:</label>
+                <select>
+                    <option selected disabled>Select Player</option>
+                    {% for player in players %}
+                        <option>{{ player[0] }}</option>
+                    {% endfor %}
+                </select>
+            </details>
+        </details>
         <div class="form-group row">
-        <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Submit Match Report</button>
-        </div>
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Submit Match Report</button>
+            </div>
         </div>
     </form>
+</details>
 {% endblock %}
