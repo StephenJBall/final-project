@@ -42,7 +42,9 @@ def contracts():
                        INNER JOIN playerbase ON contracts.player_id = playerbase.id
                        ORDER BY contracts.duration;""")
         player_contract = cursor.fetchall()
-        return render_template("contracts.html", player_contract=player_contract)
+        cursor.execute("""SELECT name FROM playerbase""")
+        players = cursor.fetchall()
+        return render_template("contracts.html", player_contract=player_contract, players=players)
     if request.method == "POST":
         cursor.execute("""SELECT name FROM playerbase""")
         players = cursor.fetchall()
