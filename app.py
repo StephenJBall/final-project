@@ -25,7 +25,14 @@ def playerbase():
 @app.route("/matchreports")
 def matchreports():
     if request.method == "GET":
-        cursor.execute("""SELECT opposition, venue, competition, stage, date FROM matchreports;""")
+        cursor.execute("""SELECT matchreports.opposition, matchreports.venue, matchreports.competition, matchreports.stage, matchreports.date,
+                       team.loosehead_prop, team.hooker, team.tighthead_prop, team.loosehead_lock, team.tighthead_lock, team.blindside_flanker,
+                       team.openside_flanker, team.number_eight, team.scrum_half, team.fly_half, team.left_wing, team.inside_centre,
+                       team.outside_centre, team.right_wing, team.fullback, team.bench_16, team.bench_17, team.bench_18, team.bench_19, team.bench_20,
+                       team.bench_21, team.bench_22, team.bench_23
+                       FROM matchreports
+                       INNER JOIN team ON team.match_id = matchreports.id
+                       ORDER BY matchreports.date DESC;""")
         matches = cursor.fetchall()
         return render_template("/matchreports.html", matches=matches)
     

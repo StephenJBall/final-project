@@ -11,5 +11,13 @@
         <h3>{{ match[2] }}</h3>
         <h4>{{ match[3] }}</h4>
         <h4>{{ match[4] }}</h4>
+        <detail>
+            <summary>Starting Team</summary>
+            {{ match[5:20] }}
+        </detail>
+        <detail>
+            <summary>Bench</summary>
+            {{ match[20:30] }}
+        </detail>
     {% endfor %} 
 {% endblock %}
