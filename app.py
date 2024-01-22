@@ -23,7 +23,8 @@ def index():
                            team.bench_21, team.bench_22, team.bench_23)
                            ORDER BY matchreports.date DESC LIMIT 1"""
                            % name)
-            return cursor.fetchall()[0][0]
+            result = cursor.fetchall()
+            return result[0][0]
         return render_template("playerbase.html", players=players, match=match)
 
 @app.route("/playerbase")
@@ -41,7 +42,8 @@ def playerbase():
                            team.bench_21, team.bench_22, team.bench_23)
                            ORDER BY matchreports.date DESC LIMIT 1"""
                            % name)
-            return cursor.fetchall()[0][0]
+            result = cursor.fetchall()
+            return result[0][0]
         return render_template("playerbase.html", players=players, match=match)
     
 @app.route("/matchreports")
@@ -58,10 +60,32 @@ def matchreports():
         matches = cursor.fetchall()
         return render_template("/matchreports.html", matches=matches)
     
-@app.route("/injuryreports")
+@app.route("/injuryreports", methods=["GET", "POST"])
 def injuryreports():
     if request.method == "GET":
-        return render_template("/injuryreports.html")
+        cursor.execute("""SELECT playerbase.name, injuryreports.injury, injuryreports.expected_return 
+                       FROM playerbase
+                       INNER JOIN injuryreports ON injuryreports.player_id = playerbase.id""")
+        injuries = cursor.fetchall()
+        return render_template("/injuryreports.html", injuries=injuries)
+    if request.method == "POST":
+        cursor.execute("""SELECT playerbase.name, injuryreports.injury, injuryreports.expected_return 
+                       FROM playerbase
+                       INNER JOIN injuryreports ON injuryreports.player_id = playerbase.id""")
+        injuries = cursor.fetchall()
+        player = request.form.get("injuredplayer")
+        cursor.execute("""SELECT id FROM playerbase WHERE name = '%s';""" % player)
+        id = cursor.fetchall()[0]
+        injury = request.form.get("injury")
+        expectedreturn = request.form.get("expectedreturn")
+        cursor.execute("""INSERT INTO injuryreports
+                       (player_id, injury, expected_return)
+                       VALUES (%s, %s, %s)
+                       """,
+                       (id, injury, expectedreturn))
+        conn.commit()
+        return render_template("/injuryreports.html", injuries=injuries)
+        
 
 @app.route("/contracts", methods=["GET", "POST"])
 def contracts():
