@@ -31,7 +31,8 @@ def index():
 @app.route("/playerbase")
 def playerbase():
     if request.method == "GET":
-        cursor.execute("""SELECT name, date_of_birth, position, caps, tries, last_match, injury_status FROM playerbase""")
+        cursor.execute("""SELECT name, date_of_birth, position, caps, tries, last_match, injury_status FROM playerbase
+                       ORDER BY position""")
         players = cursor.fetchall()
         def match(name):
             cursor.execute("""SELECT matchreports.opposition
