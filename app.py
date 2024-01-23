@@ -83,6 +83,12 @@ def injuryreports():
                        VALUES (%s, %s, %s)
                        """,
                        (id, injury, expectedreturn))
+        cursor.execute("""
+                       UPDATE playerbase 
+                       SET injury_status = 'Injured' 
+                       WHERE id = %s;
+                       """
+                       % id)
         conn.commit()
         return render_template("/injuryreports.html", injuries=injuries)
         
