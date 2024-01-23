@@ -11,7 +11,8 @@ app.config['SECRET KEY'] = 'secretkey'
 @app.route("/")
 def index():
     if request.method == "GET":
-        cursor.execute("""SELECT name, date_of_birth, position, caps, tries, last_match, injury_status FROM playerbase""")
+        cursor.execute("""SELECT name, date_of_birth, position, caps, tries, last_match, injury_status FROM playerbase
+                       ORDER BY position""")
         players = cursor.fetchall()
         def match(name):
             cursor.execute("""SELECT matchreports.opposition
@@ -63,14 +64,20 @@ def matchreports():
 @app.route("/injuryreports", methods=["GET", "POST"])
 def injuryreports():
     if request.method == "GET":
+        cursor.execute("""SELECT name, date_of_birth, position, caps, tries, last_match, injury_status FROM playerbase
+                       ORDER BY position""")
+        players = cursor.fetchall()
         cursor.execute("""SELECT playerbase.name, injuryreports.injury, injuryreports.expected_return 
                        FROM playerbase
                        INNER JOIN injuryreports ON injuryreports.player_id = playerbase.id
                        WHERE injuryreports.active = 'yes'
                        """)
         injuries = cursor.fetchall()
-        return render_template("/injuryreports.html", injuries=injuries)
+        return render_template("/injuryreports.html", players=players, injuries=injuries)
     if request.method == "POST":
+        cursor.execute("""SELECT name, date_of_birth, position, caps, tries, last_match, injury_status FROM playerbase
+                       ORDER BY position""")
+        players = cursor.fetchall()
         cursor.execute("""SELECT playerbase.name, injuryreports.injury, injuryreports.expected_return 
                        FROM playerbase
                        INNER JOIN injuryreports ON injuryreports.player_id = playerbase.id
@@ -94,7 +101,7 @@ def injuryreports():
                        """
                        % id)
         conn.commit()
-        return render_template("/injuryreports.html", injuries=injuries)
+        return render_template("/injuryreports.html", players=players, injuries=injuries)
     
 @app.route("/removeinjury",  methods=["POST"])
 def removeinjury():
