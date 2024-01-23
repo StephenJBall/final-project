@@ -13,11 +13,19 @@
         <h4>{{ match[4] }}</h4>
         <detail>
             <summary>Starting Team</summary>
-            {{ match[5:20] }}
+            <ol>
+            {% for player in match[5:20] %}
+            <li>{{ player }}</li>
+            {% endfor %}
+            </ol>
         </detail>
         <detail>
             <summary>Bench</summary>
-            {{ match[20:30] }}
+            <ol start="16">
+                {% for player in match[20:30] %}
+                <li>{{ player }}</li>
+                {% endfor %}
+            </ol>
         </detail>
     {% endfor %} 
 {% endblock %}
