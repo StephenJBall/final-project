@@ -65,13 +65,17 @@ def injuryreports():
     if request.method == "GET":
         cursor.execute("""SELECT playerbase.name, injuryreports.injury, injuryreports.expected_return 
                        FROM playerbase
-                       INNER JOIN injuryreports ON injuryreports.player_id = playerbase.id""")
+                       INNER JOIN injuryreports ON injuryreports.player_id = playerbase.id
+                       WHERE injuryreports.active = 'yes'
+                       """)
         injuries = cursor.fetchall()
         return render_template("/injuryreports.html", injuries=injuries)
     if request.method == "POST":
         cursor.execute("""SELECT playerbase.name, injuryreports.injury, injuryreports.expected_return 
                        FROM playerbase
-                       INNER JOIN injuryreports ON injuryreports.player_id = playerbase.id""")
+                       INNER JOIN injuryreports ON injuryreports.player_id = playerbase.id
+                       WHERE injuryreports.active = 'yes'
+                       """)
         injuries = cursor.fetchall()
         player = request.form.get("injuredplayer")
         cursor.execute("""SELECT id FROM playerbase WHERE name = '%s';""" % player)
@@ -79,8 +83,8 @@ def injuryreports():
         injury = request.form.get("injury")
         expectedreturn = request.form.get("expectedreturn")
         cursor.execute("""INSERT INTO injuryreports
-                       (player_id, injury, expected_return)
-                       VALUES (%s, %s, %s)
+                       (player_id, injury, expected_return, active)
+                       VALUES (%s, %s, %s, 'yes')
                        """,
                        (id, injury, expectedreturn))
         cursor.execute("""
@@ -91,7 +95,33 @@ def injuryreports():
                        % id)
         conn.commit()
         return render_template("/injuryreports.html", injuries=injuries)
-        
+    
+@app.route("/removeinjury",  methods=["POST"])
+def removeinjury():
+    if request.method == "POST":
+        name = request.form.get("name")
+        id = cursor.execute("""SELECT id FROM playerbase WHERE name = '%s';
+                            """
+                            % name)
+        id = cursor.fetchall()[0]
+        cursor.execute("""UPDATE playerbase
+                       SET injury_status = 'Not Injured'
+                       WHERE name = '%s';
+                       """
+                       % name)
+        cursor.execute("""UPDATE injuryreports
+                       SET active = 'no'
+                       WHERE player_id = %s
+                       """
+                       % id)
+        conn.commit()
+        cursor.execute("""SELECT playerbase.name, injuryreports.injury, injuryreports.expected_return 
+                       FROM playerbase
+                       INNER JOIN injuryreports ON injuryreports.player_id = playerbase.id
+                       WHERE injuryreports.active = 'yes'
+                       """)
+        injuries = cursor.fetchall()
+        return render_template("/injuryreports.html", injuries=injuries)
 
 @app.route("/contracts", methods=["GET", "POST"])
 def contracts():
