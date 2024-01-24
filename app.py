@@ -11,7 +11,7 @@ app.config['SECRET KEY'] = 'secretkey'
 @app.route("/")
 def index():
     if request.method == "GET":
-        cursor.execute("""SELECT name, date_of_birth, position, caps, tries, last_match, injury_status FROM playerbase
+        cursor.execute("""SELECT name, date_of_birth, position, caps, tries, injury_status FROM playerbase
                        ORDER BY position""")
         players = cursor.fetchall()
         def match(name):
@@ -31,7 +31,7 @@ def index():
 @app.route("/playerbase")
 def playerbase():
     if request.method == "GET":
-        cursor.execute("""SELECT name, date_of_birth, position, caps, tries, last_match, injury_status FROM playerbase
+        cursor.execute("""SELECT name, date_of_birth, position, caps, tries, injury_status FROM playerbase
                        ORDER BY position""")
         players = cursor.fetchall()
         def match(name):
@@ -65,7 +65,7 @@ def matchreports():
 @app.route("/injuryreports", methods=["GET", "POST"])
 def injuryreports():
     if request.method == "GET":
-        cursor.execute("""SELECT name, date_of_birth, position, caps, tries, last_match, injury_status FROM playerbase
+        cursor.execute("""SELECT name, date_of_birth, position, caps, tries, injury_status FROM playerbase
                        ORDER BY position""")
         players = cursor.fetchall()
         cursor.execute("""SELECT playerbase.name, injuryreports.injury, injuryreports.expected_return 
@@ -76,7 +76,7 @@ def injuryreports():
         injuries = cursor.fetchall()
         return render_template("/injuryreports.html", players=players, injuries=injuries)
     if request.method == "POST":
-        cursor.execute("""SELECT name, date_of_birth, position, caps, tries, last_match, injury_status FROM playerbase
+        cursor.execute("""SELECT name, date_of_birth, position, caps, tries, injury_status FROM playerbase
                        ORDER BY position""")
         players = cursor.fetchall()
         cursor.execute("""SELECT playerbase.name, injuryreports.injury, injuryreports.expected_return 
@@ -165,7 +165,40 @@ def adddata():
     if request.method == "GET":
         cursor.execute("""SELECT name FROM playerbase""")
         players = cursor.fetchall()
-        return render_template("/adddata.html", players=players)
+        # positions
+        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Loosehead Prop' OR position = 'Tighthead Prop';""")
+        props = cursor.fetchall()
+        
+        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Hooker';""")
+        hookers = cursor.fetchall()
+
+        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Lock' OR position = 'Back Row / Lock';""")
+        locks = cursor.fetchall()
+
+        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Back Row' OR position = 'Back Row / Lock';""")
+        backrows = cursor.fetchall()
+
+        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Scrum Half';""")
+        scrumhalfs = cursor.fetchall()
+
+        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Fly Half';""")
+        flyhalfs = cursor.fetchall()
+
+        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Centre';""")
+        centres = cursor.fetchall()
+
+        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Winger' OR position = 'Fullback';""")
+        backthrees = cursor.fetchall()
+
+        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Loosehead Prop' OR position = 'Tighthead Prop' OR position = 'Lock' OR position = 'Back Row / Lock'
+                       OR position = 'Back Row';""")
+        benchforwards = cursor.fetchall()
+
+        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Scrum Half' OR position = 'Fly Half' OR position = 'Centre' OR position = 'Wing' OR position = 'Fullback';""")
+        benchbacks = cursor.fetchall()
+
+        return render_template("/adddata.html", players=players, props=props, hookers=hookers, locks=locks, backrows=backrows, scrumhalfs=scrumhalfs,
+                               centres=centres, flyhalfs=flyhalfs, backthrees=backthrees, benchforwards=benchforwards, benchbacks=benchbacks)
     if request.method =="POST":
         name = request.form.get("playername")
         dob = request.form.get("playerdob")
@@ -182,6 +215,7 @@ def adddata():
                        """, 
                        (player_info))
         conn.commit()
+
         return render_template("/adddata.html")
 
 @app.route("/editdata", methods=["GET", "POST"])
