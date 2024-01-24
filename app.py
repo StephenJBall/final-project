@@ -52,6 +52,7 @@ def playerbase():
 def matchreports():
     if request.method == "GET":
         cursor.execute("""SELECT matchreports.opposition, matchreports.venue, matchreports.competition, matchreports.stage, matchreports.date,
+                       matchreports.munster_score, matchreports.opposition_score,
                        team.loosehead_prop, team.hooker, team.tighthead_prop, team.loosehead_lock, team.tighthead_lock, team.blindside_flanker,
                        team.openside_flanker, team.number_eight, team.scrum_half, team.fly_half, team.left_wing, team.inside_centre,
                        team.outside_centre, team.right_wing, team.fullback, team.bench_16, team.bench_17, team.bench_18, team.bench_19, team.bench_20,
@@ -187,10 +188,10 @@ def adddata():
         cursor.execute("""SELECT name FROM playerbase WHERE position = 'Centre';""")
         centres = cursor.fetchall()
 
-        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Winger' OR position = 'Fullback';""")
+        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Winger' OR position = 'Fullback' OR position = 'Centre';""")
         backthrees = cursor.fetchall()
 
-        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Loosehead Prop' OR position = 'Tighthead Prop' OR position = 'Lock' OR position = 'Back Row / Lock'
+        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Loosehead Prop' OR position = 'Tighthead Prop' OR position = 'Hooker' OR position = 'Lock' OR position = 'Back Row / Lock'
                        OR position = 'Back Row';""")
         benchforwards = cursor.fetchall()
 
@@ -216,7 +217,39 @@ def adddata():
                        (player_info))
         conn.commit()
 
-        return render_template("/adddata.html")
+        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Loosehead Prop' OR position = 'Tighthead Prop';""")
+        props = cursor.fetchall()
+        
+        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Hooker';""")
+        hookers = cursor.fetchall()
+
+        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Lock' OR position = 'Back Row / Lock';""")
+        locks = cursor.fetchall()
+
+        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Back Row' OR position = 'Back Row / Lock';""")
+        backrows = cursor.fetchall()
+
+        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Scrum Half';""")
+        scrumhalfs = cursor.fetchall()
+
+        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Fly Half';""")
+        flyhalfs = cursor.fetchall()
+
+        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Centre';""")
+        centres = cursor.fetchall()
+
+        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Winger' OR position = 'Fullback' OR position = 'Centre';""")
+        backthrees = cursor.fetchall()
+
+        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Loosehead Prop' OR position = 'Tighthead Prop' OR position = 'Hooker' OR position = 'Lock' OR position = 'Back Row / Lock'
+                       OR position = 'Back Row';""")
+        benchforwards = cursor.fetchall()
+
+        cursor.execute("""SELECT name FROM playerbase WHERE position = 'Scrum Half' OR position = 'Fly Half' OR position = 'Centre' OR position = 'Wing' OR position = 'Fullback';""")
+        benchbacks = cursor.fetchall()
+
+        return render_template("/adddata.html", players=players, props=props, hookers=hookers, locks=locks, backrows=backrows, scrumhalfs=scrumhalfs,
+                               centres=centres, flyhalfs=flyhalfs, backthrees=backthrees, benchforwards=benchforwards, benchbacks=benchbacks)
 
 @app.route("/editdata", methods=["GET", "POST"])
 def editdata():

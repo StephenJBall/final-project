@@ -114,6 +114,18 @@
                 <input name="date" type="date" class="form-control" id="date" placeholder="Date">
             </div>
         </div>
+        <div class="form-group row">
+            <label for="munsterscore" class="col-sm-2 col-form-label">Munster Score</label>
+            <div class="col-sm-10">
+                <input name="munsterscore" type="number" class="form-control" id="munsterscore" placeholder="Score">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="oppositionscore" class="col-sm-2 col-form-label">Opposition Score</label>
+            <div class="col-sm-10">
+                <input name="oppositionscore" type="number" class="form-control" id="munsterscore" placeholder="Score">
+            </div>
+        </div>
         <details>
             <summary>Add Match Team</summary>
             <details>
@@ -284,8 +296,8 @@
                 <label for="bench23" id="bench">23:</label>
                 <select name="bench23">
                     <option selected disabled>Select Player</option>
-                    {% for benchback in benchbacks %}
-                        <option>{{ benchback[0] }}</option>
+                    {% for player in players %}
+                        <option>{{ player[0] }}</option>
                     {% endfor %}
                 </select>
             </details>
