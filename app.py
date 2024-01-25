@@ -291,9 +291,11 @@ def addmatch():
         competition = request.form.get("competition")
         stage = request.form.get("stage")
         date = request.form.get("date")
-        cursor.execute("""INSERT INTO matchreports (opposition, venue, competition, stage, date)
+        munsterscore = request.form.get("munsterscore")
+        oppositionscore = request.form.get("oppositionscore")
+        cursor.execute("""INSERT INTO matchreports (opposition, venue, competition, stage, date, munster_score, opposition_score)
                        VALUES (%s,%s,%s,%s,%s);""",
-                       (opposition, venue, competition, stage, date))
+                       (opposition, venue, competition, stage, date, munsterscore, oppositionscore))
         conn.commit()
         looseheadprop = request.form.get("looseheadprop")
         hooker = request.form.get("hooker")
