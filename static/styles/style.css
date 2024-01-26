@@ -2,3 +2,100 @@ html * {
     font-family: sans-serif
 }
 
+.navbar-custom
+{
+    background-color: #b30000;
+    padding-left: 1em;
+}
+
+#button
+{
+    color: rgb(0, 0, 0);
+}
+
+#navbar-text
+{
+    color: #cfba00;
+}
+
+#table
+{
+    background-color: #011952;
+}
+
+details {
+    padding: 30px;
+    background-color: #e4eaef;
+    border-radius: 5px;
+}
+
+#teamselect {
+    padding-right: 10px;
+    padding-bottom: 5px;
+}
+
+.teamdetails 
+{
+    padding: 10px;
+}
+
+#matchcontainer {
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+    border-style: solid;
+    border-top-color: #011952;
+    border-bottom-color: white;
+    background-color: #02267a;
+    color: white;
+}
+
+#matchdetails
+{
+    float: left;
+    width: 33%;
+    padding-top: 20px;
+}
+
+#matchdetails h1
+{
+    padding: 10px; 
+}
+
+#matchteamstart
+{
+    float: inline-start
+}
+
+#matchteambench
+{
+    float: inline-end;
+    padding-right: 20%;
+    width: 33%;
+}
+
+#matchteamstart summary
+{
+    padding: 5px;
+    list-style: none;
+    padding-left: 30px;
+    font-weight: bold;
+}
+
+#matchteambench summary
+{
+    padding: 5px;
+    list-style: none;
+    padding-left: 30px;
+    font-weight: bold;
+}
+
+form 
+{
+    padding-left: 15px;
+}
+
+form input
+{
+    max-width: 50%;
+}

@@ -5,28 +5,34 @@
 {% endblock %}
 
 {% block main %}
-    {% for match in matches %} 
-        <h1>{{ match[0] }}</h1>
-        <h2>{{ match[1] }}</h2>
-        <h3>{{ match[2] }}</h3>
-        <h4>{{ match[3] }}</h4>
-        <h4>{{ match[4] }}</h4>
-        <h5>Munster {{ match[5] }} - {{ match[6] }} {{ match[0] }}</h5>
-        <detail>
-            <summary>Starting Team</summary>
-            <ol>
-            {% for player in match[7:22] %}
-            <li>{{ player }}</li>
-            {% endfor %}
-            </ol>
-        </detail>
-        <detail>
-            <summary>Bench</summary>
-            <ol start="16">
-                {% for player in match[22:32] %}
+    {% for match in matches %}
+    <div id="matchcontainer">
+        <div id="matchdetails">
+            <h1>{{ match[0] }}</h1>
+            <h2>{{ match[1] }}</h2>
+            <h3>{{ match[2] }}</h3>
+            <h4>{{ match[3] }}</h4>
+            <h4>{{ match[4] }}</h4>
+            <h5>Munster {{ match[5] }} - {{ match[6] }} {{ match[0] }}</h5>
+        </div>
+        <div id="matchteam">
+            <div id="matchteamstart">
+                <summary>Starting Team</summary>
+                <ol>
+                {% for player in match[7:22] %}
                 <li>{{ player }}</li>
                 {% endfor %}
-            </ol>
-        </detail>
+                </ol>
+            </div>
+            <div id="matchteambench">
+                <summary>Bench</summary>
+                <ol start="16">
+                    {% for player in match[22:32] %}
+                    <li>{{ player }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+    </div> 
     {% endfor %} 
 {% endblock %}

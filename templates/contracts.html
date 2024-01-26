@@ -9,19 +9,19 @@
     <table class="table table-striped table-dark">
         <thead>
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Contract Duration</th>
-            <th scope="col">Contract Type</th>
-            <th scope="col">Contract Issuer</th>
+            <th id="table" scope="col">Name</th>
+            <th id="table" scope="col">Contract Duration</th>
+            <th id="table" scope="col">Contract Type</th>
+            <th id="table" scope="col">Contract Issuer</th>
         </tr>
         </thead>
         <tbody>
         {% for contract in player_contract %}
         <tr>
-            <td>{{ contract[0] }}</td>
-            <td>{{ contract[1] }}</td>
-            <td>{{ contract[2] }}</td>
-            <td>{{ contract[3] }}</td>
+            <td id="table">{{ contract[0] }}</td>
+            <td id="table">{{ contract[1] }}</td>
+            <td id="table">{{ contract[2] }}</td>
+            <td id="table">{{ contract[3] }}</td>
         </tr>
         {% endfor %}
         </tbody>

@@ -8,18 +8,18 @@
     <table class="table table-striped table-dark">
         <thead>
         <tr>
-            <th scope="col">Player</th>
-            <th scope="col">Injury</th>
-            <th scope="col">Expected Return</th>
-            <th scope="col"></th>
+            <th id="table" scope="col">Player</th>
+            <th id="table" scope="col">Injury</th>
+            <th id="table" scope="col">Expected Return</th>
+            <th id="table" scope="col"></th>
         </tr>
         </thead>
         <tbody>
             {% for injury in injuries %}
         <tr>
-            <td>{{ injury[0] }}</td>
-            <td>{{ injury[1] }}</td>
-            <td>{{ injury[2] }}</td>
+            <td id="table">{{ injury[0] }}</td>
+            <td id="table">{{ injury[1] }}</td>
+            <td id="table">{{ injury[2] }}</td>
         <form action="removeinjury" method="post">
             <input type="hidden" name="name" value="{{ injury[0] }}">
             <td><button name="clearinjury" type="submit">Clear Injury Report</button></td>

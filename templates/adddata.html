@@ -128,60 +128,60 @@
         </div>
         <details>
             <summary>Add Match Team</summary>
-            <details>
+            <details class="teamdetails">
                 <summary>Starting 15</summary>
-                <details>
+                <details class="teamdetails">
                     <summary>Forwards</summary>
-                    <label for="looseheadprop" id="starter">Loosehead Prop:</label>
+                    <label id="teamselect" for="looseheadprop" id="starter">Loosehead Prop:</label>
                     <select name="looseheadprop">
                         <option selected disabled>Select Player</option>
                         {% for prop in props %}
                             <option>{{ prop[0] }}</option>
                         {% endfor %}
                     </select>
-                    <label for="hooker" id="starter">Hooker:</label>
+                    <label id="teamselect" for="hooker" id="starter">Hooker:</label>
                     <select name="hooker">
                         <option selected disabled>Select Player</option>
                         {% for hooker in hookers %}
                             <option>{{ hooker[0] }}</option>
                         {% endfor %}
                     </select>
-                    <label for="tightheadprop" id="starter">Tighthead Prop:</label>
+                    <label id="teamselect" for="tightheadprop" id="starter">Tighthead Prop:</label>
                     <select name ="tightheadprop">
                         <option selected disabled>Select Player</option>
                         {% for prop in props %}
                             <option>{{ prop[0] }}</option>
                         {% endfor %}
                     </select name="looseheadlock">
-                    <label for="looseheadlock" id="starter">Loosehead Lock:</label>
+                    <label id="teamselect" for="looseheadlock" id="starter">Loosehead Lock:</label>
                     <select name="looseheadlock">
                         <option selected disabled>Select Player</option>
                         {% for lock in locks %}
                             <option>{{ lock[0] }}</option>
                         {% endfor %}
                     </select>
-                    <label for="tightheadlock" id="starter">Tighthead Lock:</label>
+                    <label id="teamselect" for="tightheadlock" id="starter">Tighthead Lock:</label>
                     <select name="tightheadlock">
                         <option selected disabled>Select Player</option>
                         {% for lock in locks %}
                             <option>{{ lock[0] }}</option>
                         {% endfor %}
                     </select>
-                    <label for="blindsideflanker" id="starter">Blindside Flanker:</label>
+                    <label id="teamselect" for="blindsideflanker" id="starter">Blindside Flanker:</label>
                     <select name="blindsideflanker">
                         <option selected disabled>Select Player</option>
                         {% for backrow in backrows %}
                             <option>{{ backrow[0] }}</option>
                         {% endfor %}
                     </select>
-                    <label for="opensideflanker" id="starter">Openside Flanker:</label>
+                    <label id="teamselect" for="opensideflanker" id="starter">Openside Flanker:</label>
                     <select name="opensideflanker">
                         <option selected disabled>Select Player</option>
                         {% for backrow in backrows %}
                             <option>{{ backrow[0] }}</option>
                         {% endfor %}
                     </select>
-                    <label for="numbereight" id="starter">Number Eight:</label>
+                    <label id="teamselect" for="numbereight" id="starter">Number Eight:</label>
                     <select name="numbereight">
                         <option selected disabled>Select Player</option>
                         {% for backrow in backrows %}
@@ -189,7 +189,7 @@
                         {% endfor %}
                     </select>
                 </details>
-                <details>
+                <details class="teamdetails">
                     <summary>Backs</summary>
                     <label for="scrumhalf" id="starter">Scrum Half:</label>
                     <select name="scrumhalf">
@@ -242,7 +242,7 @@
                     </select>
                 </details>
             </details>
-            <details>
+            <details class="teamdetails">
                 <summary>Bench</summary>
                 <label for="bench16" id="bench">16:</label>
                 <select name="bench16">

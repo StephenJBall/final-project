@@ -11,22 +11,7 @@ app.config['SECRET KEY'] = 'secretkey'
 @app.route("/")
 def index():
     if request.method == "GET":
-        cursor.execute("""SELECT name, date_of_birth, position, caps, tries, injury_status FROM playerbase
-                       ORDER BY position""")
-        players = cursor.fetchall()
-        def match(name):
-            cursor.execute("""SELECT matchreports.opposition
-                           FROM matchreports
-                           JOIN team ON team.match_id = matchreports.id
-                           WHERE '%s' IN (team.loosehead_prop, team.hooker, team.tighthead_prop, team.loosehead_lock, team.tighthead_lock, team.blindside_flanker,
-                           team.openside_flanker, team.number_eight, team.scrum_half, team.fly_half, team.left_wing, team.inside_centre,
-                           team.outside_centre, team.right_wing, team.fullback, team.bench_16, team.bench_17, team.bench_18, team.bench_19, team.bench_20,
-                           team.bench_21, team.bench_22, team.bench_23)
-                           ORDER BY matchreports.date DESC LIMIT 1"""
-                           % name)
-            result = cursor.fetchall()
-            return result[0][0]
-        return render_template("playerbase.html", players=players, match=match)
+        return render_template("index.html")
 
 @app.route("/playerbase")
 def playerbase():
