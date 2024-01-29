@@ -1,7 +1,6 @@
 import os
 
 from flask import Flask, redirect, render_template, request
-from flask_session import Session
 from db import conn, cursor
 
 app = Flask(__name__)

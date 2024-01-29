@@ -45,8 +45,10 @@ details {
     display: inline-block;
     border-style: solid;
     border-top-color: #011952;
-    border-bottom-color: white;
-    background-color: #02267a;
+    border-bottom-color: #b30000;
+    border-left-color: #011952;
+    border-right-color: #011952;
+    background-color: #011b58;
     color: white;
 }
 
@@ -64,13 +66,15 @@ details {
 
 #matchteamstart
 {
-    float: inline-start
+    float: inline-start;
+    list-style-position: inside
 }
 
 #matchteambench
 {
     float: inline-end;
-    padding-right: 20%;
+    padding-right: 22.5%;
+    list-style-position: inside;
     width: 33%;
 }
 
@@ -98,4 +102,9 @@ form
 form input
 {
     max-width: 50%;
+}
+
+#matchreportsbackground
+{
+    background-color: #b30000;
 }
