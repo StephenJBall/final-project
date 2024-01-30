@@ -201,6 +201,9 @@ def adddata():
                        (player_info))
         conn.commit()
 
+        cursor.execute("""SELECT name FROM playerbase""")
+        players = cursor.fetchall()
+
         cursor.execute("""SELECT name FROM playerbase WHERE position = 'Loosehead Prop' OR position = 'Tighthead Prop';""")
         props = cursor.fetchall()
         
