@@ -139,50 +139,50 @@
                             <option value="{{ prop[0] }}" id="playernames">{{ prop[0] }}</option>
                         {% endfor %}
                     </select>
-                    <label id="teamselect" for="hooker" id="starter" onChange="updateOtherSelects(this)">Hooker:</label>
-                    <select name="hooker" onChange="selectThis(this)">
+                    <label id="teamselect" for="hooker" id="starter">Hooker:</label>
+                    <select name="hooker" onChange="updateOtherSelects(this)">
                         <option selected disabled>Select Player</option>
                         {% for hooker in hookers %}
                             <option id="playernames">{{ hooker[0] }}</option>
                         {% endfor %}
                     </select>
-                    <label id="teamselect" for="tightheadprop" id="starter" onChange="updateOtherSelects(this)">Tighthead Prop:</label>
-                    <select name ="tightheadprop" onChange="selectThis(this)">
+                    <label id="teamselect" for="tightheadprop" id="starter">Tighthead Prop:</label>
+                    <select name ="tightheadprop" onChange="updateOtherSelects(this)">
                         <option selected disabled>Select Player</option>
                         {% for prop in props %}
                             <option value="{{ prop[0] }}" id="playernames">{{ prop[0] }}</option>
                         {% endfor %}
                     </select name="looseheadlock">
                     <label id="teamselect" for="looseheadlock" id="starter">Loosehead Lock:</label>
-                    <select name="looseheadlock">
+                    <select name="looseheadlock" onChange="updateOtherSelects(this)">
                         <option selected disabled>Select Player</option>
                         {% for lock in locks %}
                             <option>{{ lock[0] }}</option>
                         {% endfor %}
                     </select>
                     <label id="teamselect" for="tightheadlock" id="starter">Tighthead Lock:</label>
-                    <select name="tightheadlock">
+                    <select name="tightheadlock" onChange="updateOtherSelects(this)">
                         <option selected disabled>Select Player</option>
                         {% for lock in locks %}
                             <option>{{ lock[0] }}</option>
                         {% endfor %}
                     </select>
                     <label id="teamselect" for="blindsideflanker" id="starter">Blindside Flanker:</label>
-                    <select name="blindsideflanker">
+                    <select name="blindsideflanker" onChange="updateOtherSelects(this)">
                         <option selected disabled>Select Player</option>
                         {% for backrow in backrows %}
                             <option>{{ backrow[0] }}</option>
                         {% endfor %}
                     </select>
                     <label id="teamselect" for="opensideflanker" id="starter">Openside Flanker:</label>
-                    <select name="opensideflanker">
+                    <select name="opensideflanker" onChange="updateOtherSelects(this)">
                         <option selected disabled>Select Player</option>
                         {% for backrow in backrows %}
                             <option>{{ backrow[0] }}</option>
                         {% endfor %}
                     </select>
                     <label id="teamselect" for="numbereight" id="starter">Number Eight:</label>
-                    <select name="numbereight">
+                    <select name="numbereight" onChange="updateOtherSelects(this)">
                         <option selected disabled>Select Player</option>
                         {% for backrow in backrows %}
                             <option>{{ backrow[0] }}</option>
@@ -192,49 +192,49 @@
                 <details class="teamdetails">
                     <summary>Backs</summary>
                     <label for="scrumhalf" id="starter">Scrum Half:</label>
-                    <select name="scrumhalf">
+                    <select name="scrumhalf" onChange="updateOtherSelects(this)">
                         <option selected disabled>Select Player</option>
                         {% for scrumhalf in scrumhalfs %}
                             <option>{{ scrumhalf[0] }}</option>
                         {% endfor %}
                     </select>
                     <label for="flyhalf" id="starter">Fly Half:</label>
-                    <select name="flyhalf">
+                    <select name="flyhalf" onChange="updateOtherSelects(this)">
                         <option selected disabled>Select Player</option>
                         {% for flyhalf in flyhalfs %}
                             <option>{{ flyhalf[0] }}</option>
                         {% endfor %}
                     </select>
                     <label for="leftwing" id="starter">Left Wing:</label>
-                    <select name="leftwing">
+                    <select name="leftwing" onChange="updateOtherSelects(this)">
                         <option selected disabled>Select Player</option>
                         {% for backthree in backthrees %}
                             <option>{{ backthree[0] }}</option>
                         {% endfor %}
                     </select>
                     <label for="insidecentre" id="starter">Inside Centre:</label>
-                    <select name="insidecentre">
+                    <select name="insidecentre" onChange="updateOtherSelects(this)">
                         <option selected disabled>Select Player</option>
                         {% for centre in centres %}
                             <option>{{ centre[0] }}</option>
                         {% endfor %}
                     </select>
                     <label for="outsidecentre" id="starter">Outside Centre:</label>
-                    <select name="outsidecentre">
+                    <select name="outsidecentre" onChange="updateOtherSelects(this)">
                         <option selected disabled>Select Player</option>
                         {% for centre in centres %}
                             <option>{{ centre[0] }}</option>
                         {% endfor %}
                     </select>
                     <label for="rightwing" id="starter">Right Wing:</label>
-                    <select name="rightwing">
+                    <select name="rightwing" onChange="updateOtherSelects(this)">
                         <option selected disabled>Select Player</option>
                         {% for backthree in backthrees %}
                             <option>{{ backthree[0] }}</option>
                         {% endfor %}
                     </select>
                     <label for="fullback" id="starter">Fullback:</label>
-                    <select name="fullback">
+                    <select name="fullback" onChange="updateOtherSelects(this)">
                         <option selected disabled>Select Player</option>
                         {% for backthree in backthrees %}
                             <option>{{ backthree[0] }}</option>
@@ -245,56 +245,56 @@
             <details class="teamdetails">
                 <summary>Bench</summary>
                 <label for="bench16" id="bench">16:</label>
-                <select name="bench16">
+                <select name="bench16" onChange="updateOtherSelects(this)">
                     <option selected disabled>Select Player</option>
                     {% for benchforward in benchforwards %}
                         <option>{{ benchforward[0] }}</option>
                     {% endfor %}
                 </select>
                 <label for="bench17" id="bench">17:</label>
-                <select name="bench17">
+                <select name="bench17" onChange="updateOtherSelects(this)">
                     <option selected disabled>Select Player</option>
                     {% for benchforward in benchforwards %}
                         <option>{{ benchforward[0] }}</option>
                     {% endfor %}
                 </select>
                 <label for="bench18" id="bench">18:</label>
-                <select name="bench18">
+                <select name="bench18" onChange="updateOtherSelects(this)">
                     <option selected disabled>Select Player</option>
                     {% for benchforward in benchforwards %}
                         <option>{{ benchforward[0] }}</option>
                     {% endfor %}
                 </select>
                 <label for="bench19" id="bench">19:</label>
-                <select name="bench19">
+                <select name="bench19" onChange="updateOtherSelects(this)">
                     <option selected disabled>Select Player</option>
                     {% for benchforward in benchforwards %}
                         <option>{{ benchforward[0] }}</option>
                     {% endfor %}
                 </select>
                 <label for="bench20" id="bench">20:</label>
-                <select name="bench20">
+                <select name="bench20" onChange="updateOtherSelects(this)">
                     <option selected disabled>Select Player</option>
                     {% for player in players %}
                         <option>{{ player[0] }}</option>
                     {% endfor %}
                 </select>
                 <label for="bench21" id="bench">21:</label>
-                <select name="bench21">
+                <select name="bench21" onChange="updateOtherSelects(this)">
                     <option selected disabled>Select Player</option>
                     {% for player in players %}
                         <option>{{ player[0] }}</option>
                     {% endfor %}
                 </select>
                 <label for="bench22" id="bench">22:</label>
-                <select name="bench22">
+                <select name="bench22" onChange="updateOtherSelects(this)">
                     <option selected disabled>Select Player</option>
                     {% for benchback in benchbacks %}
                         <option>{{ benchback[0] }}</option>
                     {% endfor %}
                 </select>
                 <label for="bench23" id="bench">23:</label>
-                <select name="bench23">
+                <select name="bench23" onChange="updateOtherSelects(this)">
                     <option selected disabled>Select Player</option>
                     {% for player in players %}
                         <option>{{ player[0] }}</option>
