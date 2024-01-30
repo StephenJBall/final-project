@@ -133,24 +133,24 @@
                 <details class="teamdetails">
                     <summary>Forwards</summary>
                     <label id="teamselect" for="looseheadprop" id="starter">Loosehead Prop:</label>
-                    <select name="looseheadprop">
+                    <select name="looseheadprop" onChange="updateOtherSelects(this)">
                         <option selected disabled>Select Player</option>
                         {% for prop in props %}
-                            <option>{{ prop[0] }}</option>
+                            <option value="{{ prop[0] }}" id="playernames">{{ prop[0] }}</option>
                         {% endfor %}
                     </select>
-                    <label id="teamselect" for="hooker" id="starter">Hooker:</label>
-                    <select name="hooker">
+                    <label id="teamselect" for="hooker" id="starter" onChange="updateOtherSelects(this)">Hooker:</label>
+                    <select name="hooker" onChange="selectThis(this)">
                         <option selected disabled>Select Player</option>
                         {% for hooker in hookers %}
-                            <option>{{ hooker[0] }}</option>
+                            <option id="playernames">{{ hooker[0] }}</option>
                         {% endfor %}
                     </select>
-                    <label id="teamselect" for="tightheadprop" id="starter">Tighthead Prop:</label>
-                    <select name ="tightheadprop">
+                    <label id="teamselect" for="tightheadprop" id="starter" onChange="updateOtherSelects(this)">Tighthead Prop:</label>
+                    <select name ="tightheadprop" onChange="selectThis(this)">
                         <option selected disabled>Select Player</option>
                         {% for prop in props %}
-                            <option>{{ prop[0] }}</option>
+                            <option value="{{ prop[0] }}" id="playernames">{{ prop[0] }}</option>
                         {% endfor %}
                     </select name="looseheadlock">
                     <label id="teamselect" for="looseheadlock" id="starter">Loosehead Lock:</label>
