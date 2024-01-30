@@ -11,31 +11,31 @@
         <div class="form-group row">
         <label for="playername" class="col-sm-2 col-form-label">Player Name</label>
         <div class="col-sm-10">
-            <input name="playername" type="text" class="form-control" id="playername" placeholder="Player Name">
+            <input name="playername" type="text" class="form-control" id="playername" placeholder="Player Name" required>
         </div>
         </div>
         <div class="form-group row">
         <label for="playerdob" class="col-sm-2 col-form-label">Date of Birth</label>
         <div class="col-sm-10">
-            <input name="playerdob" type="date" class="form-control" id="playerdob" placeholder="Age">
+            <input name="playerdob" type="date" class="form-control" id="playerdob" placeholder="Age" required>
         </div>
         </div>
         <div class="form-group row">
             <label for="position" class="col-sm-2 col-form-label">Position</label>
             <div class="col-sm-10">
-                <input name="position" type="text" class="form-control" id="position" placeholder="Postition">
+                <input name="position" type="text" class="form-control" id="position" placeholder="Postition" required>
             </div>
         </div>
         <div class="form-group row">
             <label for="position" class="col-sm-2 col-form-label">Tries</label>
             <div class="col-sm-10">
-                <input name="tries" type="number" class="form-control" id="position" placeholder="Tries">
+                <input name="tries" type="number" class="form-control" id="position" placeholder="Tries" required>
             </div>
         </div>
         <div class="form-group row">
             <label for="caps" class="col-sm-2 col-form-label">Caps</label>
             <div class="col-sm-10">
-                <input name="caps" type="number" class="form-control" id="position" placeholder="Caps">
+                <input name="caps" type="number" class="form-control" id="position" placeholder="Caps" required>
             </div>
         </div>
         <fieldset class="form-group">
@@ -43,7 +43,7 @@
             <label for="caps" class="col-sm-2 col-form-label">Injury Status</label>
             <div class="form-group col-md-4">
                 <label for="inputState"></label>
-                <select name="injurystatus" id="inputState" class="form-control">
+                <select name="injurystatus" id="inputState" class="form-control" required>
                   <option selected disabled>Injury Status</option>
                   <option>Injured</option>
                   <option>Not Injured</option>
@@ -65,7 +65,7 @@
             <div class="row">
                 <div class="form-group col-md-4">
                     <label for="inputState"></label>
-                    <select name="selectplayer" id="inputState" class="form-control">
+                    <select name="selectplayer" id="inputState" class="form-control" required>
                       <option selected disabled>Select Player</option>
                       {% for player in players %}
                       <option>{{ player[0] }}</option>
@@ -87,43 +87,43 @@
         <div class="form-group row">
         <label for="opposition" class="col-sm-2 col-form-label">Opposition</label>
         <div class="col-sm-10">
-            <input name="opposition" type="text" class="form-control" id="opposition" placeholder="Opposition">
+            <input name="opposition" type="text" class="form-control" id="opposition" placeholder="Opposition" required>
         </div>
         </div>
         <div class="form-group row">
         <label for="venue" class="col-sm-2 col-form-label">Venue</label>
         <div class="col-sm-10">
-            <input name="venue" type="text" class="form-control" id="venue" placeholder="Venue">
+            <input name="venue" type="text" class="form-control" id="venue" placeholder="Venue" required>
         </div>
         </div>
         <div class="form-group row">
             <label for="competition" class="col-sm-2 col-form-label">Competition</label>
             <div class="col-sm-10">
-                <input name="competition" type="text" class="form-control" id="competition" placeholder="Competition">
+                <input name="competition" type="text" class="form-control" id="competition" placeholder="Competition" required>
             </div>
         </div>
         <div class="form-group row">
             <label for="stage" class="col-sm-2 col-form-label">Stage</label>
             <div class="col-sm-10">
-                <input name="stage" type="text" class="form-control" id="stage" placeholder="Stage">
+                <input name="stage" type="text" class="form-control" id="stage" placeholder="Stage" required>
             </div>
         </div>
         <div class="form-group row">
             <label for="date" class="col-sm-2 col-form-label">Date</label>
             <div class="col-sm-10">
-                <input name="date" type="date" class="form-control" id="date" placeholder="Date">
+                <input name="date" type="date" class="form-control" id="date" placeholder="Date" required>
             </div>
         </div>
         <div class="form-group row">
             <label for="munsterscore" class="col-sm-2 col-form-label">Munster Score</label>
             <div class="col-sm-10">
-                <input name="munsterscore" type="number" class="form-control" id="munsterscore" placeholder="Score">
+                <input name="munsterscore" type="number" class="form-control" id="munsterscore" placeholder="Score" required>
             </div>
         </div>
         <div class="form-group row">
             <label for="oppositionscore" class="col-sm-2 col-form-label">Opposition Score</label>
             <div class="col-sm-10">
-                <input name="oppositionscore" type="number" class="form-control" id="munsterscore" placeholder="Score">
+                <input name="oppositionscore" type="number" class="form-control" id="munsterscore" placeholder="Score" required>
             </div>
         </div>
         <details>
@@ -133,56 +133,56 @@
                 <details class="teamdetails">
                     <summary>Forwards</summary>
                     <label id="teamselect" for="looseheadprop" id="starter">Loosehead Prop:</label>
-                    <select name="looseheadprop" onChange="updateOtherSelects(this)">
+                    <select name="looseheadprop" onChange="updateOtherSelects(this)" required>
                         <option selected disabled>Select Player</option>
                         {% for prop in props %}
                             <option value="{{ prop[0] }}" id="playernames">{{ prop[0] }}</option>
                         {% endfor %}
                     </select>
                     <label id="teamselect" for="hooker" id="starter">Hooker:</label>
-                    <select name="hooker" onChange="updateOtherSelects(this)">
+                    <select name="hooker" onChange="updateOtherSelects(this)" required>
                         <option selected disabled>Select Player</option>
                         {% for hooker in hookers %}
                             <option id="playernames">{{ hooker[0] }}</option>
                         {% endfor %}
                     </select>
                     <label id="teamselect" for="tightheadprop" id="starter">Tighthead Prop:</label>
-                    <select name ="tightheadprop" onChange="updateOtherSelects(this)">
+                    <select name ="tightheadprop" onChange="updateOtherSelects(this)" required>
                         <option selected disabled>Select Player</option>
                         {% for prop in props %}
                             <option value="{{ prop[0] }}" id="playernames">{{ prop[0] }}</option>
                         {% endfor %}
                     </select name="looseheadlock">
                     <label id="teamselect" for="looseheadlock" id="starter">Loosehead Lock:</label>
-                    <select name="looseheadlock" onChange="updateOtherSelects(this)">
+                    <select name="looseheadlock" onChange="updateOtherSelects(this)" required>
                         <option selected disabled>Select Player</option>
                         {% for lock in locks %}
                             <option>{{ lock[0] }}</option>
                         {% endfor %}
                     </select>
                     <label id="teamselect" for="tightheadlock" id="starter">Tighthead Lock:</label>
-                    <select name="tightheadlock" onChange="updateOtherSelects(this)">
+                    <select name="tightheadlock" onChange="updateOtherSelects(this)" required>
                         <option selected disabled>Select Player</option>
                         {% for lock in locks %}
                             <option>{{ lock[0] }}</option>
                         {% endfor %}
                     </select>
                     <label id="teamselect" for="blindsideflanker" id="starter">Blindside Flanker:</label>
-                    <select name="blindsideflanker" onChange="updateOtherSelects(this)">
+                    <select name="blindsideflanker" onChange="updateOtherSelects(this)" required>
                         <option selected disabled>Select Player</option>
                         {% for backrow in backrows %}
                             <option>{{ backrow[0] }}</option>
                         {% endfor %}
                     </select>
                     <label id="teamselect" for="opensideflanker" id="starter">Openside Flanker:</label>
-                    <select name="opensideflanker" onChange="updateOtherSelects(this)">
+                    <select name="opensideflanker" onChange="updateOtherSelects(this)" required>
                         <option selected disabled>Select Player</option>
                         {% for backrow in backrows %}
                             <option>{{ backrow[0] }}</option>
                         {% endfor %}
                     </select>
                     <label id="teamselect" for="numbereight" id="starter">Number Eight:</label>
-                    <select name="numbereight" onChange="updateOtherSelects(this)">
+                    <select name="numbereight" onChange="updateOtherSelects(this)" required>
                         <option selected disabled>Select Player</option>
                         {% for backrow in backrows %}
                             <option>{{ backrow[0] }}</option>
@@ -192,49 +192,49 @@
                 <details class="teamdetails">
                     <summary>Backs</summary>
                     <label for="scrumhalf" id="starter">Scrum Half:</label>
-                    <select name="scrumhalf" onChange="updateOtherSelects(this)">
+                    <select name="scrumhalf" onChange="updateOtherSelects(this)" required>
                         <option selected disabled>Select Player</option>
                         {% for scrumhalf in scrumhalfs %}
                             <option>{{ scrumhalf[0] }}</option>
                         {% endfor %}
                     </select>
                     <label for="flyhalf" id="starter">Fly Half:</label>
-                    <select name="flyhalf" onChange="updateOtherSelects(this)">
+                    <select name="flyhalf" onChange="updateOtherSelects(this)" required>
                         <option selected disabled>Select Player</option>
                         {% for flyhalf in flyhalfs %}
                             <option>{{ flyhalf[0] }}</option>
                         {% endfor %}
                     </select>
                     <label for="leftwing" id="starter">Left Wing:</label>
-                    <select name="leftwing" onChange="updateOtherSelects(this)">
+                    <select name="leftwing" onChange="updateOtherSelects(this)" required>
                         <option selected disabled>Select Player</option>
                         {% for backthree in backthrees %}
                             <option>{{ backthree[0] }}</option>
                         {% endfor %}
                     </select>
                     <label for="insidecentre" id="starter">Inside Centre:</label>
-                    <select name="insidecentre" onChange="updateOtherSelects(this)">
+                    <select name="insidecentre" onChange="updateOtherSelects(this)" required>
                         <option selected disabled>Select Player</option>
                         {% for centre in centres %}
                             <option>{{ centre[0] }}</option>
                         {% endfor %}
                     </select>
                     <label for="outsidecentre" id="starter">Outside Centre:</label>
-                    <select name="outsidecentre" onChange="updateOtherSelects(this)">
+                    <select name="outsidecentre" onChange="updateOtherSelects(this)" required>
                         <option selected disabled>Select Player</option>
                         {% for centre in centres %}
                             <option>{{ centre[0] }}</option>
                         {% endfor %}
                     </select>
                     <label for="rightwing" id="starter">Right Wing:</label>
-                    <select name="rightwing" onChange="updateOtherSelects(this)">
+                    <select name="rightwing" onChange="updateOtherSelects(this)" required>
                         <option selected disabled>Select Player</option>
                         {% for backthree in backthrees %}
                             <option>{{ backthree[0] }}</option>
                         {% endfor %}
                     </select>
                     <label for="fullback" id="starter">Fullback:</label>
-                    <select name="fullback" onChange="updateOtherSelects(this)">
+                    <select name="fullback" onChange="updateOtherSelects(this)" required>
                         <option selected disabled>Select Player</option>
                         {% for backthree in backthrees %}
                             <option>{{ backthree[0] }}</option>
@@ -245,56 +245,56 @@
             <details class="teamdetails">
                 <summary>Bench</summary>
                 <label for="bench16" id="bench">16:</label>
-                <select name="bench16" onChange="updateOtherSelects(this)">
+                <select name="bench16" onChange="updateOtherSelects(this)" required>
                     <option selected disabled>Select Player</option>
                     {% for benchforward in benchforwards %}
                         <option>{{ benchforward[0] }}</option>
                     {% endfor %}
                 </select>
                 <label for="bench17" id="bench">17:</label>
-                <select name="bench17" onChange="updateOtherSelects(this)">
+                <select name="bench17" onChange="updateOtherSelects(this)" required>
                     <option selected disabled>Select Player</option>
                     {% for benchforward in benchforwards %}
                         <option>{{ benchforward[0] }}</option>
                     {% endfor %}
                 </select>
                 <label for="bench18" id="bench">18:</label>
-                <select name="bench18" onChange="updateOtherSelects(this)">
+                <select name="bench18" onChange="updateOtherSelects(this)" required>
                     <option selected disabled>Select Player</option>
                     {% for benchforward in benchforwards %}
                         <option>{{ benchforward[0] }}</option>
                     {% endfor %}
                 </select>
                 <label for="bench19" id="bench">19:</label>
-                <select name="bench19" onChange="updateOtherSelects(this)">
+                <select name="bench19" onChange="updateOtherSelects(this)" required>
                     <option selected disabled>Select Player</option>
                     {% for benchforward in benchforwards %}
                         <option>{{ benchforward[0] }}</option>
                     {% endfor %}
                 </select>
                 <label for="bench20" id="bench">20:</label>
-                <select name="bench20" onChange="updateOtherSelects(this)">
+                <select name="bench20" onChange="updateOtherSelects(this)" required>
                     <option selected disabled>Select Player</option>
                     {% for player in players %}
                         <option>{{ player[0] }}</option>
                     {% endfor %}
                 </select>
                 <label for="bench21" id="bench">21:</label>
-                <select name="bench21" onChange="updateOtherSelects(this)">
+                <select name="bench21" onChange="updateOtherSelects(this)" required>
                     <option selected disabled>Select Player</option>
                     {% for player in players %}
                         <option>{{ player[0] }}</option>
                     {% endfor %}
                 </select>
                 <label for="bench22" id="bench">22:</label>
-                <select name="bench22" onChange="updateOtherSelects(this)">
+                <select name="bench22" onChange="updateOtherSelects(this)" required>
                     <option selected disabled>Select Player</option>
                     {% for benchback in benchbacks %}
                         <option>{{ benchback[0] }}</option>
                     {% endfor %}
                 </select>
                 <label for="bench23" id="bench">23:</label>
-                <select name="bench23" onChange="updateOtherSelects(this)">
+                <select name="bench23" onChange="updateOtherSelects(this)" required>
                     <option selected disabled>Select Player</option>
                     {% for player in players %}
                         <option>{{ player[0] }}</option>
