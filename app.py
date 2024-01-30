@@ -252,7 +252,7 @@ def editdata():
         position = player[0][3]
         tries = player[0][4]
         caps = player[0][5]
-        injurystatus = player[0][7]
+        injurystatus = player[0][6]
         return render_template("/editdata.html", player=player, name=name, dob=dob, position=position, tries=tries, caps=caps, injurystatus=injurystatus)
     
 @app.route("/datasubmitted", methods=["GET", "POST"])
