@@ -29,7 +29,10 @@ def playerbase():
                            ORDER BY matchreports.date DESC LIMIT 1"""
                            % name)
             result = cursor.fetchall()
-            return result[0][0]
+            if len(result) < 1:
+                return "No Match Found"
+            else:
+                return result[0][0]
         return render_template("playerbase.html", players=players, match=match)
     
 @app.route("/matchreports")
@@ -281,7 +284,7 @@ def addmatch():
         munsterscore = request.form.get("munsterscore")
         oppositionscore = request.form.get("oppositionscore")
         cursor.execute("""INSERT INTO matchreports (opposition, venue, competition, stage, date, munster_score, opposition_score)
-                       VALUES (%s,%s,%s,%s,%s);""",
+                       VALUES (%s,%s,%s,%s,%s,%s,%s);""",
                        (opposition, venue, competition, stage, date, munsterscore, oppositionscore))
         conn.commit()
         looseheadprop = request.form.get("looseheadprop")
@@ -324,4 +327,4 @@ def addmatch():
                             VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);""",
                             (this_match))
         conn.commit()
-        return render_template("/adddata.html")
+        return redirect("/matchreports")

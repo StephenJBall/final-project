@@ -26,12 +26,8 @@
             <td id="table">{{ player[2] }}</td>
             <td id="table">{{ player[3] }}</td>
             <td id="table">{{ player[4] }}</td>
-                {% if match(player[0]) == None %}
-                    <td id="table">No match data</td>
-                {% else %}
-                    <td id="table">{{ match(player[0]) }}</td>
-                {% endif %}
-                <td id="table">{{ player[5] }}</td>
+            <td id="table">{{ match(player[0]) }}</td>
+            <td id="table">{{ player[5] }}</td>
         </tr>
             {% endfor %}
         </tbody>
