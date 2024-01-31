@@ -129,7 +129,12 @@ def contracts():
         player_contract = cursor.fetchall()
         cursor.execute("""SELECT name FROM playerbase""")
         players = cursor.fetchall()
-        return render_template("contracts.html", player_contract=player_contract, players=players)
+        cursor.execute("""SELECT playerbase.name
+                       FROM playerbase
+                       INNER JOIN contracts ON playerbase.id = contracts.player_id
+                       ORDER BY playerbase.name""")
+        contracted_players = cursor.fetchall()
+        return render_template("contracts.html", player_contract=player_contract, players=players, contracted_players=contracted_players)
     if request.method == "POST":
         cursor.execute("""SELECT name FROM playerbase""")
         players = cursor.fetchall()
@@ -328,3 +333,35 @@ def addmatch():
                             (this_match))
         conn.commit()
         return redirect("/matchreports")
+
+@app.route("/editcontract", methods=["GET", "POST"])
+def editcontract():
+    if request.method == "POST":
+        player = request.form.get("selected_player")
+        cursor.execute("""SELECT id FROM playerbase WHERE name = '%s';""" % player)
+        id = cursor.fetchall()[0][0]
+        cursor.execute("""SELECT duration, type, issuer FROM contracts WHERE player_id = %s;""" % id)
+        contract_info = cursor.fetchall()
+        duration = contract_info[0][0]
+        type = contract_info[0][1]
+        issuer = contract_info[0][2]
+        return render_template("/editcontract.html", player=player, duration=duration, type=type, issuer=issuer)
+    
+@app.route("/contractsubmitted", methods=["POST"])
+def contractsubmitted():
+    if request.method == "POST":
+        player = request.form.get("selected_player")
+        cursor.execute("""SELECT id FROM playerbase WHERE name = '%s';""" % player)
+        id = cursor.fetchall()[0][0]
+        duration = request.form.get("duration")
+        type = request.form.get("type")
+        issuer = request.form.get("issuer")
+        player_info = (duration, type, issuer, id)
+        cursor.execute("""
+                       UPDATE contracts
+                       SET duration = %s, type = %s, issuer = %s
+                       WHERE player_id = %s;
+                       """,
+                       (player_info))
+        conn.commit()
+        return redirect("/contracts")
