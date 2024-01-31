@@ -69,7 +69,7 @@
             <div class="row">
                 <div class="form-group col-md-4">
                     <label for="inputState">Edit Existing Contract</label>
-                    <select name="selected_player" id="inputState" class="form-control">
+                    <select name="selected_player" id="inputState contract_select" class="form-control">
                       <option selected disabled>Select Player</option>
                       {% for contracted_player in contracted_players %}
                       <option>{{ contracted_player[0] }}</option>
@@ -79,7 +79,8 @@
             </div>
         </fieldset>
         <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Confirm</button>
+            <button type="submit" class="btn btn-primary" id="contract_btn">Confirm Contract to Edit</button>
         </div>
     </form>
+    
 {% endblock %}

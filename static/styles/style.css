@@ -96,12 +96,24 @@ details {
 
 form 
 {
+    padding-top: 10px;
     padding-left: 15px;
+}
+
+form label
+{
+    padding-bottom: 10px;
+    font-weight: bold;
 }
 
 form input
 {
     max-width: 50%;
+}
+
+#inputState
+{
+    padding-bottom: 10px; 
 }
 
 #matchreportsbackground
