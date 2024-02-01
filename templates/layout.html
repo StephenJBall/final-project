@@ -3,24 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>
-    function updateOtherSelects(select) {
-      var selectedValue = select.value;
-      var selects = document.querySelectorAll('select');
-      selects.forEach(function(otherSelect) {
-        if (otherSelect !== select) {
-          var options = otherSelect.options;
-          for (var i = 0; i < options.length; i++) {
-            options[i].disabled = false;
-          }
-          var selectedOption = otherSelect.querySelector('option[value="' + selectedValue + '"]');
-          if (selectedOption) {
-            selectedOption.disabled = true;
-          }
-        }
-      });
-    }
-  </script>
   <title>Munster Stats: {% block title %}{% endblock %}</title>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">

@@ -1,5 +1,5 @@
 # Munster Stats
-#### Video Demo:  <URL HERE>
+#### Video Demo: https://youtu.be/D0hPRuV6b_0
 #### Description: 
 Munster Stats is a Flask web application that compiles various datapoints pulled from a local PostgreSql database. 
 

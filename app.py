@@ -64,15 +64,6 @@ def injuryreports():
         injuries = cursor.fetchall()
         return render_template("/injuryreports.html", players=players, injuries=injuries)
     if request.method == "POST":
-        cursor.execute("""SELECT name, date_of_birth, position, caps, tries, injury_status FROM playerbase
-                       ORDER BY position""")
-        players = cursor.fetchall()
-        cursor.execute("""SELECT playerbase.name, injuryreports.injury, injuryreports.expected_return 
-                       FROM playerbase
-                       INNER JOIN injuryreports ON injuryreports.player_id = playerbase.id
-                       WHERE injuryreports.active = 'yes'
-                       """)
-        injuries = cursor.fetchall()
         player = request.form.get("injuredplayer")
         cursor.execute("""SELECT id FROM playerbase WHERE name = '%s';""" % player)
         id = cursor.fetchall()[0]
@@ -90,6 +81,15 @@ def injuryreports():
                        """
                        % id)
         conn.commit()
+        cursor.execute("""SELECT name, date_of_birth, position, caps, tries, injury_status FROM playerbase
+                       ORDER BY position""")
+        players = cursor.fetchall()
+        cursor.execute("""SELECT playerbase.name, injuryreports.injury, injuryreports.expected_return 
+                       FROM playerbase
+                       INNER JOIN injuryreports ON injuryreports.player_id = playerbase.id
+                       WHERE injuryreports.active = 'yes'
+                       """)
+        injuries = cursor.fetchall()
         return render_template("/injuryreports.html", players=players, injuries=injuries)
     
 @app.route("/removeinjury",  methods=["POST"])
@@ -136,8 +136,6 @@ def contracts():
         contracted_players = cursor.fetchall()
         return render_template("contracts.html", player_contract=player_contract, players=players, contracted_players=contracted_players)
     if request.method == "POST":
-        cursor.execute("""SELECT name FROM playerbase""")
-        players = cursor.fetchall()
         name = request.form.get("name")
         cursor.execute("SELECT id FROM playerbase WHERE name = '%s';" % name)
         playerid = cursor.fetchall()
@@ -151,7 +149,19 @@ def contracts():
                        """,
                        (playerid, duration, type, issuer))
         conn.commit()
-        return render_template("/contracts.html", players=players)
+        cursor.execute("""SELECT playerbase.name, contracts.duration, contracts.type, contracts.issuer
+                       FROM contracts
+                       INNER JOIN playerbase ON contracts.player_id = playerbase.id
+                       ORDER BY contracts.duration;""")
+        player_contract = cursor.fetchall()
+        cursor.execute("""SELECT name FROM playerbase""")
+        players = cursor.fetchall()
+        cursor.execute("""SELECT playerbase.name
+                       FROM playerbase
+                       INNER JOIN contracts ON playerbase.id = contracts.player_id
+                       ORDER BY playerbase.name""")
+        contracted_players = cursor.fetchall()
+        return render_template("contracts.html", player_contract=player_contract, players=players, contracted_players=contracted_players)
     
 @app.route("/adddata", methods=["GET", "POST"])
 def adddata():
@@ -255,8 +265,8 @@ def editdata():
         name = player[0][1]
         dob = player[0][2]
         position = player[0][3]
-        tries = player[0][4]
-        caps = player[0][5]
+        caps = player[0][4]
+        tries = player[0][5]
         injurystatus = player[0][6]
         return render_template("/editdata.html", player=player, name=name, dob=dob, position=position, tries=tries, caps=caps, injurystatus=injurystatus)
     
