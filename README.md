@@ -1,7 +1,15 @@
 # Munster Stats
 #### Video Demo: https://youtu.be/D0hPRuV6b_0
 #### Description: 
-Munster Stats is a Flask web application that compiles various datapoints pulled from a local PostgreSql database. 
+Munster Stats is a Flask web application that compiles various datapoints pulled from a local PostgreSql database. Using the program you can view a brief summary of player details, such as their name, date of birth, position, points scored, match appearances etc. You can also view match reports which summarise the opponent, venue, competition, and points scored by each team, as well as the named team for Munster
+
+The Injury Reports tab allows you to add new injuries, update existing ones, or remove current ones that have since expired. All of this causes a dynamic change in the data that appears to you on the website while concurrently carrying out SQL queries to the local database to reflect the changes that the user made on the front-end. 
+
+Contracts works in much the same way as Injury Reports. Users can update, amend, and remove contract information here. Only players with existing contracts can have contracts edited, while any player can have a new contract added. 
+
+Add Data is the most involved section of the site. It allows users to add new players to the database, edit existing players, and add new matches to the Match Report section. Adding a new player causes their data to appear in the Player Base section of the site, while adding new Match Reports causes the match to appear on that same Match Report section of the site. 
+
+This dynamic Flask application supplies concise datapoints to the user that, with tweaks to various data fields, could be ammended to be used for not just any rugby team, but any sports team in general. 
 
 ## Features
 
